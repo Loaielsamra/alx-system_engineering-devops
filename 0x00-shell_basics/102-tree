@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -r welcome
+rm -r welcome/*
