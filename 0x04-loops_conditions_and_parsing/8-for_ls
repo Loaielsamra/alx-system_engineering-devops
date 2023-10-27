@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script list all files in the directory
+for ((n=0; n<1;n++))
+do
+	find ./* | cut -d "-" -f2 | cut -d "/" -f2
+done
