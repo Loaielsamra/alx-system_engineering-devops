@@ -12,7 +12,7 @@ if __name__ == "__main__":
     todos = requests.get(url + "/todos", params={"userId": sys.argv[1]}).json()
     username = emp_data.get("username")
 
-    with open("{}.json".format(sys.argv[1]), "w", newline="") as jfile:
+    with open("{}.json".format(sys.argv[1]), "w") as jfile:
         for t in todos:
             json.dump({sys.argv[1]: [{"task": t.get("title"),
                                       "completed": t.get("completed"),
