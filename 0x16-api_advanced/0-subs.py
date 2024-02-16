@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Just for doc"""
 import requests
 
 
