@@ -1,16 +1,26 @@
 #!/usr/bin/python3
-"""Module to query the Reddit API and returns the number of subscribers"""
-import requests
+"""this is function file"""
 
 
 def top_ten(subreddit):
-    """Returns the number of subscribers"""
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 200:
-        for i in range(10):
-            title = response.json()["data"]["children"][i]["data"]["title"]
-            print(title)
-    else:
-        print(None)
+    """
+    prints the titles of the first 10 hot posts listed for a given subreddit
+    """
+    import requests
+
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
+    Hdrs = {'User-Agent': 'Mozilla/5.0'}
+    response = requests.get(url, headers=Hdrs, allow_redirects=False)
+
+    if response.status_code != 200:
+        print("None")
+        return
+
+    data = response.json()['data']['children']
+
+    if len(data) == 0:
+        print("None")
+        return
+
+    for _ in data:
+        print(_['data']['title'])
